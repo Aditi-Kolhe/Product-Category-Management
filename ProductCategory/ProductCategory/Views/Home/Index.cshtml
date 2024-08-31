@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<div class="container mt-4">
+    <div class="jumbotron" style="background-color: #e3f2fd;">
+        <!-- Light blue background for jumbotron -->
+        <h1 class="display-4" style="color: #007bff;">Welcome to ProductCategory Management</h1> <!-- Primary blue color for title -->
+        <p class="lead">This application helps you manage products and categories efficiently.</p>
+        <hr class="my-4">
+        <p>Use the links below to navigate through the application.</p>
+        <a class="btn btn-primary btn-lg" href="@Url.Action("Index", "Category")" role="button">Manage Categories</a>
+        <a class="btn btn-primary btn-lg" href="@Url.Action("Index", "Product")" role="button">Manage Products</a>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header" style="background-color: #007bff; color: white;">
+                    <h4 class="card-title">Category Management</h4>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Create, edit, and delete product categories. Organize your products into categories for better management.</p>
+                    <a href="@Url.Action("Index", "Category")" class="btn btn-primary">Go to Categories</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header" style="background-color: #007bff; color: white;">
+                    <h4 class="card-title">Product Management</h4>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Add, update, and remove products. Assign products to categories to keep everything organized.</p>
+                    <a href="@Url.Action("Index", "Product")" class="btn btn-primary">Go to Products</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Full-width footer -->
+

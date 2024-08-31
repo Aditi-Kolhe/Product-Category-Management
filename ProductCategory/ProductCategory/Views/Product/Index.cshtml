@@ -1,0 +1,84 @@
+﻿@model ProductCategory.Models.ProductListViewModel
+
+@{
+    ViewBag.Title = "Product Index";
+}
+
+<h2>Products</h2>
+
+<p>
+    @Html.ActionLink("Create New Product", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table table-bordered">
+    <thead style="background-color: skyblue;">
+        <tr>
+            <th>ProductId</th>
+            <th>ProductName</th>
+            <th>CategoryId</th>
+            <th>CategoryName</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td>@item.ProductId</td>
+                <td>@item.ProductName</td>
+                <td>@item.CategoryId</td>
+                <td>@item.Category.CategoryName</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }, new { @class = "btn btn-warning btn-sm" })
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductId }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <ul class="pagination">
+        @if (Model.TotalPages > 1)
+        {
+            // Previous button
+            if (Model.PageIndex > 1)
+            {
+                <li class="page-item">
+                    @Html.ActionLink("Previous", "Index", new { page = Model.PageIndex - 1 }, new { @class = "page-link" })
+                </li>
+            }
+            else
+            {
+                <li class="page-item disabled">
+                    <span class="page-link">Previous</span>
+                </li>
+            }
+
+            // Page numbers
+            for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                <li class="@(i == Model.PageIndex ? "page-item active" : "page-item")">
+                    @Html.ActionLink(i.ToString(), "Index", new { page = i }, new { @class = "page-link" })
+                </li>
+            }
+
+            // Next button
+            if (Model.PageIndex < Model.TotalPages)
+            {
+                <li class="page-item">
+                    @Html.ActionLink("Next", "Index", new { page = Model.PageIndex + 1 }, new { @class = "page-link" })
+                </li>
+            }
+            else
+            {
+                <li class="page-item disabled">
+                    <span class="page-link">Next</span>
+                </li>
+            }
+        }
+    </ul>
+</div>
